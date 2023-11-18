@@ -7,6 +7,8 @@
 pthread_mutex_t chipsBagMutex;
 int numPlayers = 6;
 int chipsInBag = 30;
+int chipsInBagREFILL = 0;
+int totalBagOfChips = 0;
 float seed = 0;
 int rounds = 1;                                 // Global variable to track the number of completed rounds
 volatile int keepPlaying = 1;                   // Global flag
@@ -90,11 +92,12 @@ void shuffleDeck(Card *deck)
 // Print the deck
 void printDeck(Card *deck)
 {
-    printf("Deck size NOW %d \n", deckSize);
+    printf("REMAINING DECK SIZE: %d \n", deckSize);
     for (int i = 0; i < DECK_SIZE; i++)
     {
-        printf("%s of %s\n", deck[i].value, deck[i].suit);
+        printf(" %s of %s ", deck[i].value, deck[i].suit);
     }
+    printf("\n");
 }
 
 Card drawGreasyCard(Card *deck)
@@ -143,15 +146,15 @@ void *routine(void *args)
 
     while (keepPlaying)
     {
-        printf("Player %d trying to lock mutex\n", playerNumber);
+        // printf("Player %d trying to lock mutex\n", playerNumber);
         pthread_mutex_lock(&chipsBagMutex);
-        printf("Player %d acquired the mutex\n", playerNumber);
+        // printf("Player %d acquired the mutex\n", playerNumber);
 
         while (playerNumber != currentPlayer)
         {
-            printf("Player %d waiting for turn. Current player: %d\n", playerNumber, currentPlayer);
+            // printf("Player %d waiting for turn. Current player: %d\n", playerNumber, currentPlayer);
             pthread_cond_wait(&cond, &chipsBagMutex);
-            printf("Player %d woke up from cond_wait\n", playerNumber);
+            // printf("Player %d woke up from cond_wait\n", playerNumber);
         }
 
         // Logic here for cards
@@ -159,12 +162,13 @@ void *routine(void *args)
         //  Check if current player is the dealer, if so proceed, shuffle, draw the greasy.
         if (playerNumber == ((rounds % numPlayers) + 1))
         {
-            printf("Player %d is the dealer for this round\n", playerNumber);
+            // printf("Player %d is the dealer for this round\n", playerNumber);
             pthread_mutex_lock(&cardDeckMutex);
 
             shuffleDeck(ourDeck);
+            printf("DECK SHUFFLED---");
+            printDeck(ourDeck);
             greasyCard = drawGreasyCard(ourDeck);
-            // printDeck(ourDeck);
 
             pthread_mutex_unlock(&cardDeckMutex);
             // Additional dealer responsibilities can be added here
@@ -201,16 +205,17 @@ void *routine(void *args)
         }
 
         int chipsNeeded = (rand_r(&localSeed) % 5) + 1;
-        printf("Player %d needs %d chips\n", playerNumber, chipsNeeded);
+        // printf("Player %d needs %d chips\n", playerNumber, chipsNeeded);
 
         if (chipsInBag - chipsNeeded < 0)
         {
             printf("Player %d found no chips, refilling bag\n", playerNumber);
-            chipsInBag = 30;
+            chipsInBag = chipsInBagREFILL;
+            totalBagOfChips++;
         }
 
         chipsInBag -= chipsNeeded;
-        printf("Player %d took %d chips, Chips left %d\n", playerNumber, chipsNeeded, chipsInBag);
+        printf("Player %d took %d chips from bag %d, chips left %d\n", playerNumber, chipsNeeded, totalBagOfChips, chipsInBag);
 
         // Check for round completion and move to the next player
 
@@ -223,11 +228,11 @@ void *routine(void *args)
         }
 
         currentPlayer = (currentPlayer % numPlayers) + 1;
-        printf("Player %d finished turn. Next player: %d\n", playerNumber, currentPlayer);
+        // printf("Player %d finished turn. Next player: %d\n", playerNumber, currentPlayer);
 
         pthread_cond_broadcast(&cond);
         pthread_mutex_unlock(&chipsBagMutex);
-        printf("Player %d unlocked mutex and finished turn\n", playerNumber);
+        // printf("Player %d unlocked mutex and finished turn\n", playerNumber);
     }
 
     printf("Thread, Player %d ending\n", playerNumber);
@@ -251,26 +256,33 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
+    chipsInBagREFILL = chipsInBag;
+
     srand(seed);
     pthread_t players[numPlayers];
-
     pthread_mutex_init(&chipsBagMutex, NULL);
     pthread_mutex_init(&cardDeckMutex, NULL);
 
-    // init the card deck
+    // Initialize the card deck
     initializeDeck(ourDeck);
-    // printDeck(ourDeck);
-    // shuffleDeck(ourDeck);
-    // printf("------------------");
-    // printDeck(ourDeck);
 
-    int playerNumbers[numPlayers]; // Array to hold player numbers
+    printf("Note that (3, 9), this would mean round 3, card value of 9 \n");
+
+    int *playerNumbers = malloc(numPlayers * sizeof(int)); // Dynamic allocation
+    if (playerNumbers == NULL)
+    {
+        perror("Failed to allocate memory for player numbers\n");
+        exit(1);
+    }
+
     for (int i = 0; i < numPlayers; i++)
     {
         playerNumbers[i] = i + 1; // Assign player number (1-based indexing)
         if (pthread_create(&players[i], NULL, &routine, &playerNumbers[i]) != 0)
         {
             perror("Failed to create player, that is, thread \n");
+            free(playerNumbers);
+            exit(1);
         }
     }
 
@@ -281,6 +293,8 @@ int main(int argc, char *argv[])
             perror("Failed to join player, that is, thread");
         }
     }
+
+    free(playerNumbers); // Free the dynamically allocated memory
 
     pthread_mutex_destroy(&chipsBagMutex);
     pthread_mutex_destroy(&cardDeckMutex);
