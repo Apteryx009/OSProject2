@@ -5,49 +5,52 @@ Thread, Player 1 starting
 Player 1: hand (1, 2) <> Greasy Card is 0 
 Player 1 took 2 chips from bag 0, chips left 28
 Thread, Player 2 starting
-DECK SHUFFLED---REMAINING DECK SIZE: 51 
+DECK SHUFFLED---
+REMAINING DECK SIZE: 51 
  3 of Spades  Ace of Spades  6 of Clubs  Jack of Hearts  Jack of Diamonds  8 of Clubs  10 of Diamonds  9 of Diamonds  10 of Clubs  6 of Hearts  2 of Diamonds  7 of Diamonds  Queen of Diamonds  Ace of Hearts  5 of Diamonds  3 of Diamonds  4 of Spades  8 of Diamonds  Ace of Diamonds  5 of Spades  Jack of Spades  King of Hearts  King of Spades  7 of Spades  3 of Clubs  Queen of Hearts  5 of Clubs  4 of Hearts  9 of Hearts  2 of Clubs  Ace of Spades  8 of Hearts  Jack of Clubs  3 of Hearts  5 of Hearts  7 of Clubs  Ace of Clubs  2 of Spades  4 of Diamonds  4 of Clubs  7 of Hearts  Queen of Clubs  King of Diamonds  9 of Spades  8 of Spades  Queen of Spades  6 of Spades  10 of Hearts  King of Clubs  6 of Diamonds  10 of Spades  9 of Clubs 
-greasyyy 51 Player 2: hand (1, 3) <> Greasy Card is 9 
-Player 2 took 4 chips from bag 0, chips left 24
+Player 2: hand (1, 3) <> Greasy Card is 9 
+Player 2 took 1 chips from bag 0, chips left 27
 Thread, Player 3 starting
-Thread, Player 4 starting
 Player 3: hand (1, 14) <> Greasy Card is 9 
-Player 3 took 1 chips from bag 0, chips left 23
-Thread, Player 6 starting
+Player 3 took 2 chips from bag 0, chips left 25
+Thread, Player 4 starting
 Player 4: hand (1, 6) <> Greasy Card is 9 
+Player 4 took 4 chips from bag 0, chips left 21
 Thread, Player 5 starting
-Player 4 took 2 chips from bag 0, chips left 21
+Thread, Player 6 starting
 Player 5: hand (1, 11) <> Greasy Card is 9 
-Player 5 took 5 chips from bag 0, chips left 16
+Player 5 took 1 chips from bag 0, chips left 20
 Player 6: hand (1, 11) <> Greasy Card is 9 
-Player 6 took 2 chips from bag 0, chips left 14
+Player 6 took 2 chips from bag 0, chips left 18
 Player 1: hand (1, 8) <> Greasy Card is 9 
-Player 1 took 1 chips from bag 0, chips left 13
-DECK SHUFFLED---REMAINING DECK SIZE: 44 
+Player 1 took 2 chips from bag 0, chips left 16
+DECK SHUFFLED---
+REMAINING DECK SIZE: 44 
  2 of Diamonds  3 of Clubs  8 of Hearts  10 of Spades  Queen of Diamonds  10 of Spades  3 of Diamonds  9 of Hearts  10 of Spades  Queen of Clubs  7 of Diamonds  Ace of Hearts  8 of Spades  7 of Spades  King of Clubs  5 of Spades  5 of Diamonds  King of Diamonds  6 of Hearts  5 of Hearts  4 of Hearts  9 of Diamonds  5 of Clubs  4 of Clubs  Ace of Spades  2 of Spades  10 of Hearts  6 of Spades  Queen of Hearts  Jack of Clubs  10 of Spades  6 of Diamonds  King of Hearts  10 of Spades  King of Spades  7 of Clubs  9 of Clubs  8 of Diamonds  10 of Clubs  4 of Spades  10 of Diamonds  Ace of Clubs  10 of Spades  Jack of Spades  10 of Spades  Ace of Diamonds  4 of Diamonds  2 of Clubs  3 of Hearts  Queen of Spades  10 of Spades  7 of Hearts 
-greasyyy 44 Player 2: hand (1, 2) <> Greasy Card is 11 
-Player 2 took 1 chips from bag 0, chips left 12
+Player 2: hand (1, 2) <> Greasy Card is 11 
+Player 2 took 2 chips from bag 0, chips left 14
 Player 3: hand (1, 3) <> Greasy Card is 11 
-Player 3 took 1 chips from bag 0, chips left 11
+Player 3 took 1 chips from bag 0, chips left 13
 Player 4: hand (1, 8) <> Greasy Card is 11 
-Player 4 took 5 chips from bag 0, chips left 6
+Player 4 took 1 chips from bag 0, chips left 12
 Player 5: hand (1, 10) <> Greasy Card is 11 
-Player 5 took 5 chips from bag 0, chips left 1
+Player 5 took 1 chips from bag 0, chips left 11
 Player 6: hand (1, 12) <> Greasy Card is 11 
-Player 6 found no chips, refilling bag
-Player 6 took 5 chips from bag 1, chips left 25
+Player 6 took 5 chips from bag 0, chips left 6
 Player 1: hand (1, 10) <> Greasy Card is 11 
-Player 1 took 2 chips from bag 1, chips left 23
-DECK SHUFFLED---REMAINING DECK SIZE: 37 
+Player 1 took 4 chips from bag 0, chips left 2
+DECK SHUFFLED---
+REMAINING DECK SIZE: 37 
  5 of Spades  9 of Diamonds  2 of Spades  5 of Diamonds  4 of Spades  4 of Hearts  10 of Clubs  King of Spades  Jack of Spades  10 of Spades  8 of Spades  Queen of Hearts  5 of Clubs  Jack of Spades  6 of Diamonds  10 of Spades  Jack of Spades  Queen of Spades  9 of Clubs  10 of Diamonds  Jack of Spades  5 of Hearts  Queen of Clubs  10 of Spades  10 of Spades  10 of Spades  Jack of Spades  8 of Diamonds  4 of Diamonds  7 of Spades  Jack of Spades  3 of Diamonds  7 of Hearts  4 of Clubs  10 of Spades  7 of Clubs  Ace of Spades  7 of Diamonds  Jack of Spades  6 of Hearts  Ace of Hearts  6 of Spades  King of Hearts  Ace of Diamonds  3 of Hearts  2 of Clubs  King of Clubs  Jack of Spades  King of Diamonds  Ace of Clubs  9 of Hearts  10 of Hearts 
-greasyyy 37 Player 2: hand (1, 5) <> Greasy Card is 4 
-Player 2 took 4 chips from bag 1, chips left 19
+Player 2: hand (1, 5) <> Greasy Card is 4 
+Player 2 found no chips, refilling bag
+Player 2 took 5 chips from bag 1, chips left 25
 Player 3: hand (1, 9) <> Greasy Card is 4 
-Player 3 took 2 chips from bag 1, chips left 17
+Player 3 took 2 chips from bag 1, chips left 23
 Player 4: hand (1, 2) <> Greasy Card is 4 
-Player 4 took 2 chips from bag 1, chips left 15
+Player 4 took 4 chips from bag 1, chips left 19
 Player 5: hand (1, 5) <> Greasy Card is 4 
-Player 5 took 5 chips from bag 1, chips left 10
+Player 5 took 2 chips from bag 1, chips left 17
 Player 6: hand (1, 4) <> Greasy Card is 4 
 Player 6: WINS round 1 
 Player 1: lost round 1 
@@ -55,20 +58,21 @@ Player 2: lost round 1
 Player 3: lost round 1 
 Player 4: lost round 1 
 Player 5: lost round 1 
-Player 6 took 3 chips from bag 1, chips left 7
+Player 6 took 2 chips from bag 1, chips left 15
 Player 1: hand (2, 4) <> Greasy Card is -1 
-Player 1 took 5 chips from bag 1, chips left 2
+Player 1 took 1 chips from bag 1, chips left 14
 Player 2: hand (2, 10) <> Greasy Card is -1 
-Player 2 found no chips, refilling bag
-Player 2 took 4 chips from bag 2, chips left 26
-DECK SHUFFLED---REMAINING DECK SIZE: 29 
+Player 2 took 4 chips from bag 1, chips left 10
+DECK SHUFFLED---
+REMAINING DECK SIZE: 29 
  Ace of Spades  8 of Spades  Ace of Hearts  Jack of Spades  7 of Hearts  7 of Diamonds  10 of Diamonds  Ace of Spades  Ace of Spades  Ace of Clubs  10 of Spades  3 of Diamonds  King of Clubs  Ace of Spades  10 of Spades  Jack of Spades  Ace of Diamonds  Ace of Spades  2 of Clubs  10 of Spades  Ace of Spades  6 of Spades  Jack of Spades  Jack of Spades  3 of Hearts  6 of Hearts  6 of Diamonds  10 of Hearts  Ace of Spades  10 of Spades  5 of Hearts  Ace of Spades  Jack of Spades  10 of Spades  7 of Spades  9 of Hearts  King of Diamonds  Jack of Spades  9 of Clubs  Queen of Spades  Ace of Spades  4 of Clubs  Jack of Spades  Queen of Clubs  Jack of Spades  7 of Clubs  8 of Diamonds  King of Hearts  Queen of Hearts  10 of Spades  5 of Clubs  King of Spades 
-greasyyy 29 Player 3: hand (2, 14) <> Greasy Card is 11 
-Player 3 took 4 chips from bag 2, chips left 22
+Player 3: hand (2, 14) <> Greasy Card is 11 
+Player 3 took 5 chips from bag 1, chips left 5
 Player 4: hand (2, 8) <> Greasy Card is 11 
-Player 4 took 3 chips from bag 2, chips left 19
+Player 4 took 4 chips from bag 1, chips left 1
 Player 5: hand (2, 14) <> Greasy Card is 11 
-Player 5 took 1 chips from bag 2, chips left 18
+Player 5 found no chips, refilling bag
+Player 5 took 4 chips from bag 2, chips left 26
 Player 6: hand (2, 11) <> Greasy Card is 11 
 Player 6: WINS round 2 
 Player 1: lost round 2 
@@ -76,32 +80,34 @@ Player 2: lost round 2
 Player 3: lost round 2 
 Player 4: lost round 2 
 Player 5: lost round 2 
-Player 6 took 1 chips from bag 2, chips left 17
+Player 6 took 3 chips from bag 2, chips left 23
 Player 1: hand (3, 7) <> Greasy Card is -1 
-Player 1 took 4 chips from bag 2, chips left 13
+Player 1 took 4 chips from bag 2, chips left 19
 Player 2: hand (3, 7) <> Greasy Card is -1 
-Player 2 took 5 chips from bag 2, chips left 8
+Player 2 took 5 chips from bag 2, chips left 14
 Player 3: hand (3, 10) <> Greasy Card is -1 
-Player 3 took 1 chips from bag 2, chips left 7
-DECK SHUFFLED---REMAINING DECK SIZE: 21 
+Player 3 took 4 chips from bag 2, chips left 10
+DECK SHUFFLED---
+REMAINING DECK SIZE: 21 
  Ace of Spades  Ace of Spades  10 of Hearts  5 of Hearts  Queen of Hearts  Ace of Clubs  Ace of Spades  7 of Clubs  Jack of Spades  King of Spades  Ace of Spades  8 of Diamonds  3 of Hearts  King of Clubs  6 of Hearts  King of Diamonds  6 of Diamonds  9 of Clubs  Ace of Spades  Ace of Spades  5 of Clubs  Jack of Spades  10 of Spades  10 of Spades  Ace of Spades  King of Hearts  Jack of Spades  6 of Spades  Jack of Spades  9 of Hearts  Ace of Diamonds  Queen of Clubs  Ace of Spades  10 of Spades  Ace of Spades  2 of Clubs  Ace of Spades  10 of Spades  10 of Spades  Ace of Spades  4 of Clubs  7 of Spades  Ace of Spades  3 of Diamonds  Jack of Spades  Ace of Spades  Queen of Spades  Ace of Spades  Ace of Spades  Jack of Spades  Ace of Spades  10 of Spades 
-greasyyy 21 Player 4: hand (3, 14) <> Greasy Card is 13 
-Player 4 took 3 chips from bag 2, chips left 4
+Player 4: hand (3, 14) <> Greasy Card is 13 
+Player 4 took 5 chips from bag 2, chips left 5
 Player 5: hand (3, 14) <> Greasy Card is 13 
-Player 5 took 4 chips from bag 2, chips left 0
+Player 5 took 1 chips from bag 2, chips left 4
 Player 6: hand (3, 10) <> Greasy Card is 13 
-Player 6 found no chips, refilling bag
-Player 6 took 3 chips from bag 3, chips left 27
+Player 6 took 3 chips from bag 2, chips left 1
 Player 1: hand (3, 5) <> Greasy Card is 13 
-Player 1 took 5 chips from bag 3, chips left 22
+Player 1 took 1 chips from bag 2, chips left 0
 Player 2: hand (3, 12) <> Greasy Card is 13 
-Player 2 took 5 chips from bag 3, chips left 17
+Player 2 found no chips, refilling bag
+Player 2 took 1 chips from bag 3, chips left 29
 Player 3: hand (3, 14) <> Greasy Card is 13 
-Player 3 took 5 chips from bag 3, chips left 12
-DECK SHUFFLED---REMAINING DECK SIZE: 14 
+Player 3 took 5 chips from bag 3, chips left 24
+DECK SHUFFLED---
+REMAINING DECK SIZE: 14 
  10 of Spades  Ace of Spades  Ace of Spades  Ace of Spades  Ace of Spades  2 of Clubs  5 of Clubs  Ace of Spades  5 of Clubs  Ace of Spades  5 of Clubs  5 of Clubs  3 of Diamonds  5 of Clubs  3 of Hearts  6 of Spades  Jack of Spades  Ace of Spades  Ace of Spades  10 of Spades  Jack of Spades  Jack of Spades  10 of Spades  9 of Hearts  Ace of Spades  Queen of Spades  10 of Spades  4 of Clubs  King of Diamonds  10 of Spades  Ace of Spades  6 of Diamonds  Ace of Spades  Queen of Clubs  Jack of Spades  7 of Clubs  Ace of Spades  8 of Diamonds  6 of Hearts  7 of Spades  Ace of Diamonds  King of Clubs  Ace of Spades  Ace of Spades  King of Hearts  5 of Clubs  10 of Spades  5 of Clubs  Jack of Spades  Jack of Spades  5 of Clubs  9 of Clubs 
-greasyyy 14 Player 4: hand (3, 10) <> Greasy Card is 14 
-Player 4 took 4 chips from bag 3, chips left 8
+Player 4: hand (3, 10) <> Greasy Card is 14 
+Player 4 took 5 chips from bag 3, chips left 19
 Player 5: hand (3, 14) <> Greasy Card is 14 
 Player 5: WINS round 3 
 Player 1: lost round 3 
@@ -109,29 +115,31 @@ Player 2: lost round 3
 Player 3: lost round 3 
 Player 4: lost round 3 
 Player 6: lost round 3 
-Player 5 took 2 chips from bag 3, chips left 6
+Player 5 took 5 chips from bag 3, chips left 14
 Player 6: hand (4, 14) <> Greasy Card is -1 
-Player 6 took 1 chips from bag 3, chips left 5
+Player 6 took 4 chips from bag 3, chips left 10
 Player 1: hand (4, 14) <> Greasy Card is -1 
-Player 1 took 3 chips from bag 3, chips left 2
+Player 1 took 3 chips from bag 3, chips left 7
 Player 2: hand (4, 2) <> Greasy Card is -1 
-Player 2 found no chips, refilling bag
-Player 2 took 4 chips from bag 4, chips left 26
+Player 2 took 1 chips from bag 3, chips left 6
 Player 3: hand (4, 5) <> Greasy Card is -1 
-Player 3 took 1 chips from bag 4, chips left 25
+Player 3 took 3 chips from bag 3, chips left 3
 Player 4: hand (4, 14) <> Greasy Card is -1 
-Player 4 took 4 chips from bag 4, chips left 21
-DECK SHUFFLED---REMAINING DECK SIZE: 6 
+Player 4 found no chips, refilling bag
+Player 4 took 4 chips from bag 4, chips left 26
+DECK SHUFFLED---
+REMAINING DECK SIZE: 6 
  5 of Clubs  Ace of Spades  5 of Clubs  3 of Hearts  5 of Clubs  9 of Clubs  6 of Diamonds  Ace of Spades  7 of Spades  Ace of Spades  Ace of Spades  Ace of Spades  5 of Clubs  5 of Clubs  5 of Clubs  9 of Hearts  5 of Clubs  5 of Clubs  5 of Clubs  Ace of Spades  Jack of Spades  6 of Spades  10 of Spades  10 of Spades  10 of Spades  10 of Spades  5 of Clubs  Queen of Clubs  Jack of Spades  Queen of Spades  5 of Clubs  Jack of Spades  King of Hearts  5 of Clubs  5 of Clubs  Ace of Spades  Ace of Spades  King of Clubs  Ace of Spades  3 of Diamonds  6 of Hearts  10 of Spades  5 of Clubs  Jack of Spades  Jack of Spades  4 of Clubs  Jack of Spades  7 of Clubs  8 of Diamonds  Ace of Diamonds  5 of Clubs  King of Diamonds 
-greasyyy 6 Player 5: hand (4, 5) <> Greasy Card is 5 
+Player 5: hand (4, 5) <> Greasy Card is 5 
 Player 5: WINS round 4 
 Player 1: lost round 4 
 Player 2: lost round 4 
 Player 3: lost round 4 
 Player 4: lost round 4 
 Player 6: lost round 4 
-Player 5 took 5 chips from bag 4, chips left 16
-DECK SHUFFLED---REMAINING DECK SIZE: 4 
+Player 5 took 1 chips from bag 4, chips left 25
+DECK SHUFFLED---
+REMAINING DECK SIZE: 4 
  Ace of Spades  5 of Clubs  6 of Spades  Jack of Spades  Ace of Spades  5 of Clubs  9 of Hearts  5 of Clubs  5 of Clubs  Ace of Spades  Jack of Spades  6 of Diamonds  Ace of Spades  10 of Spades  10 of Spades  4 of Clubs  5 of Clubs  5 of Clubs  6 of Hearts  Ace of Diamonds  3 of Diamonds  Queen of Clubs  Jack of Spades  5 of Clubs  5 of Clubs  5 of Clubs  10 of Spades  10 of Spades  3 of Hearts  8 of Diamonds  King of Diamonds  King of Hearts  Jack of Spades  7 of Spades  5 of Clubs  Queen of Spades  10 of Spades  5 of Clubs  Ace of Spades  9 of Clubs  9 of Clubs  5 of Clubs  King of Clubs  Ace of Spades  Jack of Spades  Ace of Spades  9 of Clubs  5 of Clubs  Ace of Spades  Jack of Spades  7 of Clubs  Ace of Spades 
-greasyyy 4 
+
 Not enough remaining cards!!! GAME OVER 
