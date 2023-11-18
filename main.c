@@ -8,7 +8,7 @@ pthread_mutex_t chipsBagMutex;
 const int numPlayers = 6;
 int chipsInBag = 30;
 int seed = 0;
-int roundsCompleted = 0; // Global variable to track the number of completed rounds
+int rounds = 1; // Global variable to track the number of completed rounds
 volatile int keepPlaying = 1; // Global flag
 int currentPlayer = 1; // Global variable to track the current player, start from 1
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER; // Condition variable
@@ -23,11 +23,16 @@ pthread_mutex_t cardDeckMutex;
 typedef struct {
     char *suit;
     char *value;
+    int numericValue; // This will help in comparing cards
 } Card;
+
 
 //deck stuff
 #define DECK_SIZE 52
 Card ourDeck[DECK_SIZE];
+Card greasyCard;
+
+int deckSize = DECK_SIZE; // Initialize with the total number of cards in the deck
 
 
 
@@ -35,14 +40,32 @@ void initializeDeck(Card *deck) {
     char *suits[] = {"Hearts", "Diamonds", "Clubs", "Spades"};
     char *values[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
 
-    printf("Initializing deck...\n");
     for (int i = 0; i < DECK_SIZE; i++) {
         deck[i].suit = suits[i / 13];
         deck[i].value = values[i % 13];
-        //printf("Card %d: %s of %s\n", i+1, deck[i].value, deck[i].suit);
+
+        // Assigning numeric values
+        if (i % 13 >= 0 && i % 13 <= 8) {
+            // For cards 2-10, the numeric value is the card number
+            deck[i].numericValue = i % 13 + 2;
+        } else if (i % 13 == 9) {
+            // Jack
+            deck[i].numericValue = 11;
+        } else if (i % 13 == 10) {
+            // Queen
+            deck[i].numericValue = 12;
+        } else if (i % 13 == 11) {
+            // King
+            deck[i].numericValue = 13;
+        } else if (i % 13 == 12) {
+            // Ace, can be treated as 1 or 14 depending on game rules
+            deck[i].numericValue = 14; // or 1
+        }
     }
+
     printf("Deck initialized.\n");
 }
+
 
 
 // Shuffle the deck
@@ -57,13 +80,43 @@ void shuffleDeck(Card *deck) {
 
 // Print the deck
 void printDeck(Card *deck) {
+    printf("Deck size NOW %d \n", deckSize);
     for (int i = 0; i < DECK_SIZE; i++) {
         printf("%s of %s\n", deck[i].value, deck[i].suit);
     }
 }
 
 
+Card drawGreasyCard(Card *deck) {
+    int index = rand() % (deckSize);
+    Card greasyCard = deck[index];
 
+    // Shift remaining cards
+    for (int i = index; i < (deckSize) - 1; i++) {
+        deck[i] = deck[i + 1];
+    }
+    (deckSize)--; // Reduce the deck size
+
+    return greasyCard;
+}
+
+
+Card drawCard(Card *deck) {
+    Card drawnCard = deck[0]; // Draw the top card
+
+    // Shift remaining cards
+    for (int i = 0; i < (deckSize) - 1; i++) {
+        deck[i] = deck[i + 1];
+    }
+    (deckSize)--; // Reduce the deck size
+
+    return drawnCard;
+}
+
+
+int isMatch(Card playerCard, Card greasyCard) {
+    return playerCard.numericValue == greasyCard.numericValue;
+}
 
 
 
@@ -92,18 +145,33 @@ void *routine(void *args) {
 
 
         //Logic here for cards
-        // Check if current player is the dealer, if so proceed and shuffle
-        if (playerNumber == ((roundsCompleted % numPlayers) + 1)) {
+        // Check if current player is the dealer, if so proceed, shuffle, draw the greasy.
+        if (playerNumber == ((rounds % numPlayers) + 1)) {
             printf("Player %d is the dealer for this round\n", playerNumber);
             pthread_mutex_lock(&cardDeckMutex);
+            
             shuffleDeck(ourDeck);  
-            printf("shuffle the deck");
+            greasyCard = drawGreasyCard(ourDeck); 
             //printDeck(ourDeck);
+            
+            
             pthread_mutex_unlock(&cardDeckMutex);
             // Additional dealer responsibilities can be added here
         }
 
-        // Chip taking logic
+        //Card drawing, comparing, and potato Chip taking logic
+        Card currentPlayerCard;
+        currentPlayerCard = drawCard(ourDeck);
+        printf("Player %d: hand (%d, %d) <> Greasy Card is %d \n", playerNumber, rounds, 
+                                        currentPlayerCard.numericValue, greasyCard.numericValue);
+
+        // Ensure the if condition is enclosed in parentheses
+        if (isMatch(currentPlayerCard, greasyCard)) {
+            printf("Player %d: wins round %d \n", playerNumber, rounds);
+            // Additional logic for when the player wins
+            
+        } 
+
         int chipsNeeded = (rand_r(&localSeed) % 5) + 1;
         printf("Player %d needs %d chips\n", playerNumber, chipsNeeded);
 
@@ -117,9 +185,9 @@ void *routine(void *args) {
 
         // Check for round completion and move to the next player
         if (playerNumber == numPlayers) {
-            roundsCompleted++;
-            printf("Player %d completed a round. Total rounds completed: %d\n", playerNumber, roundsCompleted);
-            if (roundsCompleted >= numPlayers) {
+            rounds++;
+            printf("Player %d completed a round. Total rounds completed: %d\n", playerNumber, rounds);
+            if (rounds >= numPlayers) {
                 printf("Player %d found that enough rounds are completed, stopping the game\n", playerNumber);
                 keepPlaying = 0;
             }
