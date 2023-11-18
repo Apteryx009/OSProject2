@@ -15,6 +15,63 @@ pthread_cond_t cond = PTHREAD_COND_INITIALIZER; // Condition variable
 
 
 
+
+
+
+pthread_mutex_t cardDeckMutex;
+// Structure to represent a card
+typedef struct {
+    char *suit;
+    char *value;
+} Card;
+
+//deck stuff
+#define DECK_SIZE 52
+Card ourDeck[DECK_SIZE];
+
+
+
+void initializeDeck(Card *deck) {
+    char *suits[] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+    char *values[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
+
+    printf("Initializing deck...\n");
+    for (int i = 0; i < DECK_SIZE; i++) {
+        deck[i].suit = suits[i / 13];
+        deck[i].value = values[i % 13];
+        //printf("Card %d: %s of %s\n", i+1, deck[i].value, deck[i].suit);
+    }
+    printf("Deck initialized.\n");
+}
+
+
+// Shuffle the deck
+void shuffleDeck(Card *deck) {
+    for (int i = 0; i < DECK_SIZE; i++) {
+        int r = i + rand() / (RAND_MAX / (DECK_SIZE - i) + 1);
+        Card temp = deck[i];
+        deck[i] = deck[r];
+        deck[r] = temp;
+    }
+}
+
+// Print the deck
+void printDeck(Card *deck) {
+    for (int i = 0; i < DECK_SIZE; i++) {
+        printf("%s of %s\n", deck[i].value, deck[i].suit);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+//Multi threading stuff here turn taking------------
 void *routine(void *args) {
     int playerNumber = *(int *)args;
 
@@ -31,6 +88,19 @@ void *routine(void *args) {
             printf("Player %d waiting for turn. Current player: %d\n", playerNumber, currentPlayer);
             pthread_cond_wait(&cond, &chipsBagMutex);
             printf("Player %d woke up from cond_wait\n", playerNumber);
+        }
+
+
+        //Logic here for cards
+        // Check if current player is the dealer, if so proceed and shuffle
+        if (playerNumber == ((roundsCompleted % numPlayers) + 1)) {
+            printf("Player %d is the dealer for this round\n", playerNumber);
+            pthread_mutex_lock(&cardDeckMutex);
+            shuffleDeck(ourDeck);  
+            printf("shuffle the deck");
+            //printDeck(ourDeck);
+            pthread_mutex_unlock(&cardDeckMutex);
+            // Additional dealer responsibilities can be added here
         }
 
         // Chip taking logic
@@ -90,6 +160,19 @@ int main(int argc, char *argv[])
     pthread_t players[numPlayers];
 
     pthread_mutex_init(&chipsBagMutex, NULL);
+    pthread_mutex_init(&cardDeckMutex, NULL);
+
+    //init the card deck
+    initializeDeck(ourDeck);
+    //printDeck(ourDeck);
+    //shuffleDeck(ourDeck);
+    //printf("------------------");
+    //printDeck(ourDeck);
+    
+
+    
+
+
     int playerNumbers[numPlayers]; // Array to hold player numbers
     for (int i = 0; i < numPlayers; i++)
     {
@@ -109,5 +192,7 @@ int main(int argc, char *argv[])
     }
 
     pthread_mutex_destroy(&chipsBagMutex);
+    pthread_mutex_destroy(&cardDeckMutex);
+    
     return 0;
 }
