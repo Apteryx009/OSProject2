@@ -3,8 +3,8 @@ Thread, Player 1 starting
 Player 1 trying to lock mutex
 Player 1 acquired the mutex
 Player 1: hand (1, 2) <> Greasy Card is 0 
-Player 1 needs 2 chips
-Player 1 took 2 chips, Chips left 28
+Player 1 needs 3 chips
+Player 1 took 3 chips, Chips left 27
 Player 1 finished turn. Next player: 2
 Player 1 unlocked mutex and finished turn
 Player 1 trying to lock mutex
@@ -14,62 +14,67 @@ Thread, Player 2 starting
 Player 2 trying to lock mutex
 Player 2 acquired the mutex
 Player 2 is the dealer for this round
-Player 2: hand (1, 13) <> Greasy Card is 4 
-Player 2 needs 4 chips
-Player 2 took 4 chips, Chips left 24
+Player 2: hand (1, 13) <> Greasy Card is 5 
+Player 2 needs 1 chips
+Player 2 took 1 chips, Chips left 26
 Player 2 finished turn. Next player: 3
 Player 2 unlocked mutex and finished turn
 Player 2 trying to lock mutex
 Player 2 acquired the mutex
 Player 2 waiting for turn. Current player: 3
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 3
 Thread, Player 3 starting
 Player 3 trying to lock mutex
 Player 3 acquired the mutex
-Player 3: hand (1, 13) <> Greasy Card is 4 
-Player 3 needs 1 chips
-Player 3 took 1 chips, Chips left 23
+Player 3: hand (1, 9) <> Greasy Card is 5 
+Player 3 needs 4 chips
+Player 3 took 4 chips, Chips left 22
 Player 3 finished turn. Next player: 4
 Thread, Player 4 starting
 Player 4 trying to lock mutex
-Player 2 woke up from cond_wait
-Player 2 waiting for turn. Current player: 4
+Thread, Player 5 starting
+Player 5 trying to lock mutex
+Player 5 acquired the mutex
+Player 5 waiting for turn. Current player: 4
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 4
 Player 3 unlocked mutex and finished turn
 Player 3 trying to lock mutex
 Player 3 acquired the mutex
 Player 3 waiting for turn. Current player: 4
-Thread, Player 5 starting
-Player 1 woke up from cond_wait
-Player 1 waiting for turn. Current player: 4
-Player 5 trying to lock mutex
-Player 5 acquired the mutex
-Player 5 waiting for turn. Current player: 4
-Player 4 acquired the mutex
-Player 4: hand (1, 2) <> Greasy Card is 4 
-Player 4 needs 5 chips
-Player 4 took 5 chips, Chips left 18
-Player 4 finished turn. Next player: 5
 Thread, Player 6 starting
 Player 6 trying to lock mutex
+Player 6 acquired the mutex
+Player 6 waiting for turn. Current player: 4
+Player 4 acquired the mutex
+Player 4: hand (1, 13) <> Greasy Card is 5 
+Player 4 needs 4 chips
+Player 4 took 4 chips, Chips left 18
+Player 4 finished turn. Next player: 5
+Player 5 woke up from cond_wait
+Player 5: hand (1, 12) <> Greasy Card is 5 
+Player 5 needs 1 chips
+Player 5 took 1 chips, Chips left 17
+Player 5 finished turn. Next player: 6
 Player 4 unlocked mutex and finished turn
 Player 4 trying to lock mutex
-Player 5 woke up from cond_wait
-Player 5: hand (1, 10) <> Greasy Card is 4 
-Player 5 needs 4 chips
-Player 5 took 4 chips, Chips left 14
-Player 5 finished turn. Next player: 6
-Player 3 woke up from cond_wait
-Player 3 waiting for turn. Current player: 6
+Player 4 acquired the mutex
+Player 4 waiting for turn. Current player: 6
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 6
 Player 5 unlocked mutex and finished turn
 Player 5 trying to lock mutex
 Player 5 acquired the mutex
 Player 5 waiting for turn. Current player: 6
-Player 2 woke up from cond_wait
-Player 2 waiting for turn. Current player: 6
-Player 6 acquired the mutex
-Player 6: hand (1, 10) <> Greasy Card is 4 
-Player 6 needs 4 chips
-Player 6 took 4 chips, Chips left 10
-Player 6 completed a round. Total rounds completed: 2
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 6
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 6
+Player 6 woke up from cond_wait
+Player 6: hand (1, 2) <> Greasy Card is 5 
+Player 6 needs 2 chips
+Player 6 took 2 chips, Chips left 15
 Player 6 finished turn. Next player: 1
 Player 3 woke up from cond_wait
 Player 3 waiting for turn. Current player: 1
@@ -77,64 +82,164 @@ Player 6 unlocked mutex and finished turn
 Player 6 trying to lock mutex
 Player 6 acquired the mutex
 Player 6 waiting for turn. Current player: 1
-Player 4 acquired the mutex
+Player 4 woke up from cond_wait
 Player 4 waiting for turn. Current player: 1
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 1
 Player 2 woke up from cond_wait
 Player 2 waiting for turn. Current player: 1
 Player 1 woke up from cond_wait
-Player 1: hand (2, 3) <> Greasy Card is 4 
-Player 1 needs 2 chips
-Player 1 took 2 chips, Chips left 8
+Player 1: hand (1, 8) <> Greasy Card is 5 
+Player 1 needs 5 chips
+Player 1 took 5 chips, Chips left 10
 Player 1 finished turn. Next player: 2
-Player 4 woke up from cond_wait
-Player 4 waiting for turn. Current player: 2
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 2
 Player 1 unlocked mutex and finished turn
 Player 1 trying to lock mutex
 Player 1 acquired the mutex
 Player 1 waiting for turn. Current player: 2
-Player 2 woke up from cond_wait
-Player 2: hand (2, 3) <> Greasy Card is 4 
-Player 2 needs 4 chips
-Player 2 took 4 chips, Chips left 4
-Player 2 finished turn. Next player: 3
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 2
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 2
 Player 4 woke up from cond_wait
-Player 4 waiting for turn. Current player: 3
+Player 4 waiting for turn. Current player: 2
+Player 2 woke up from cond_wait
+Player 2 is the dealer for this round
+Player 2: hand (1, 7) <> Greasy Card is 10 
+Player 2 needs 2 chips
+Player 2 took 2 chips, Chips left 8
+Player 2 finished turn. Next player: 3
+Player 3 woke up from cond_wait
+Player 3: hand (1, 6) <> Greasy Card is 10 
+Player 3 needs 4 chips
+Player 3 took 4 chips, Chips left 4
+Player 3 finished turn. Next player: 4
 Player 2 unlocked mutex and finished turn
 Player 2 trying to lock mutex
 Player 2 acquired the mutex
-Player 2 waiting for turn. Current player: 3
-Player 3 woke up from cond_wait
-Player 3 is the dealer for this round
-Player 3: hand (2, 9) <> Greasy Card is 12 
-Player 3 needs 1 chips
-Player 3 took 1 chips, Chips left 3
-Player 3 finished turn. Next player: 4
-Player 4 woke up from cond_wait
-Player 4: hand (2, 10) <> Greasy Card is 12 
-Player 4 needs 3 chips
-Player 4 took 3 chips, Chips left 0
-Player 4 finished turn. Next player: 5
+Player 2 waiting for turn. Current player: 4
 Player 3 unlocked mutex and finished turn
 Player 3 trying to lock mutex
+Player 3 acquired the mutex
+Player 3 waiting for turn. Current player: 4
 Player 5 woke up from cond_wait
-Player 5: hand (2, 6) <> Greasy Card is 12 
-Player 5 needs 2 chips
-Player 5 found no chips, refilling bag
-Player 5 took 2 chips, Chips left 28
-Player 5 finished turn. Next player: 6
+Player 5 waiting for turn. Current player: 4
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 4
+Player 4 woke up from cond_wait
+Player 4: hand (1, 11) <> Greasy Card is 10 
+Player 4 needs 1 chips
+Player 4 took 1 chips, Chips left 3
+Player 4 finished turn. Next player: 5
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 5
 Player 4 unlocked mutex and finished turn
 Player 4 trying to lock mutex
 Player 4 acquired the mutex
+Player 4 waiting for turn. Current player: 5
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 5
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 5
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 5
+Player 5 woke up from cond_wait
+Player 5: hand (1, 2) <> Greasy Card is 10 
+Player 5 needs 5 chips
+Player 5 found no chips, refilling bag
+Player 5 took 5 chips, Chips left 25
+Player 5 finished turn. Next player: 6
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 6
+Player 5 unlocked mutex and finished turn
+Player 5 trying to lock mutex
+Player 5 acquired the mutex
+Player 5 waiting for turn. Current player: 6
+Player 4 woke up from cond_wait
 Player 4 waiting for turn. Current player: 6
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 6
+Player 6 woke up from cond_wait
+Player 6: hand (1, 8) <> Greasy Card is 10 
+Player 6 needs 1 chips
+Player 6 took 1 chips, Chips left 24
+Player 6 finished turn. Next player: 1
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 1
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 1
+Player 1 woke up from cond_wait
+Player 1: hand (1, 10) <> Greasy Card is 10 
+Player 1: wins round 1 
+Player 2: lost round 2 
+Player 6 unlocked mutex and finished turn
+Player 3: lost round 2 
+Player 4: lost round 2 
+Player 5: lost round 2 
+Player 6: lost round 2 
+Player 6 trying to lock mutex
+Player 1 needs 1 chips
+Player 1 took 1 chips, Chips left 23
+Player 1 finished turn. Next player: 2
+Player 2 woke up from cond_wait
+Player 2: hand (2, 2) <> Greasy Card is -1 
+Player 2 needs 5 chips
+Player 2 took 5 chips, Chips left 18
+Player 2 finished turn. Next player: 3
+Player 1 unlocked mutex and finished turn
+Player 1 trying to lock mutex
+Player 1 acquired the mutex
+Player 1 waiting for turn. Current player: 3
+Player 3 woke up from cond_wait
+Player 3 is the dealer for this round
+Player 3: hand (2, 6) <> Greasy Card is 4 
+Player 3 needs 1 chips
+Player 3 took 1 chips, Chips left 17
+Player 2 unlocked mutex and finished turn
+Player 3 finished turn. Next player: 4
+Player 2 trying to lock mutex
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 4
+Player 3 unlocked mutex and finished turn
+Player 3 trying to lock mutex
+Player 3 acquired the mutex
+Player 3 waiting for turn. Current player: 4
+Player 6 acquired the mutex
+Player 6 waiting for turn. Current player: 4
+Player 4 woke up from cond_wait
+Player 4: hand (2, 3) <> Greasy Card is 4 
+Player 4 needs 5 chips
+Player 4 took 5 chips, Chips left 12
+Player 4 finished turn. Next player: 5
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 5
+Player 4 unlocked mutex and finished turn
+Player 4 trying to lock mutex
+Player 4 acquired the mutex
+Player 4 waiting for turn. Current player: 5
+Player 5 woke up from cond_wait
+Player 5: hand (2, 14) <> Greasy Card is 4 
+Player 5 needs 5 chips
+Player 5 took 5 chips, Chips left 7
+Player 5 finished turn. Next player: 6
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 6
 Player 5 unlocked mutex and finished turn
 Player 5 trying to lock mutex
 Player 5 acquired the mutex
 Player 5 waiting for turn. Current player: 6
 Player 6 woke up from cond_wait
-Player 6: hand (2, 10) <> Greasy Card is 12 
-Player 6 needs 4 chips
-Player 6 took 4 chips, Chips left 24
-Player 6 completed a round. Total rounds completed: 3
+Player 6: hand (2, 4) <> Greasy Card is 4 
+Player 6: wins round 2 
+Player 1: lost round 3 
+Player 2: lost round 3 
+Player 3: lost round 3 
+Player 4: lost round 3 
+Player 5: lost round 3 
+Player 6 needs 5 chips
+Player 6 took 5 chips, Chips left 2
 Player 6 finished turn. Next player: 1
 Player 5 woke up from cond_wait
 Player 5 waiting for turn. Current player: 1
@@ -142,54 +247,59 @@ Player 6 unlocked mutex and finished turn
 Player 6 trying to lock mutex
 Player 6 acquired the mutex
 Player 6 waiting for turn. Current player: 1
-Player 2 woke up from cond_wait
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 1
+Player 2 acquired the mutex
 Player 2 waiting for turn. Current player: 1
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 1
 Player 1 woke up from cond_wait
-Player 1: hand (3, 5) <> Greasy Card is 12 
+Player 1: hand (3, 6) <> Greasy Card is -1 
 Player 1 needs 4 chips
-Player 1 took 4 chips, Chips left 20
+Player 1 found no chips, refilling bag
+Player 1 took 4 chips, Chips left 26
 Player 1 finished turn. Next player: 2
-Player 5 woke up from cond_wait
-Player 5 waiting for turn. Current player: 2
+Player 2 woke up from cond_wait
+Player 2: hand (3, 5) <> Greasy Card is -1 
+Player 2 needs 1 chips
+Player 2 took 1 chips, Chips left 25
+Player 2 finished turn. Next player: 3
 Player 1 unlocked mutex and finished turn
 Player 1 trying to lock mutex
 Player 1 acquired the mutex
-Player 1 waiting for turn. Current player: 2
-Player 4 woke up from cond_wait
-Player 4 waiting for turn. Current player: 2
-Player 2 woke up from cond_wait
-Player 2: hand (3, 10) <> Greasy Card is 12 
-Player 2 needs 5 chips
-Player 2 took 5 chips, Chips left 15
-Player 2 finished turn. Next player: 3
-Player 4 woke up from cond_wait
-Player 4 waiting for turn. Current player: 3
+Player 1 waiting for turn. Current player: 3
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 3
 Player 2 unlocked mutex and finished turn
 Player 2 trying to lock mutex
 Player 2 acquired the mutex
 Player 2 waiting for turn. Current player: 3
-Player 6 woke up from cond_wait
-Player 6 waiting for turn. Current player: 3
-Player 1 woke up from cond_wait
-Player 1 waiting for turn. Current player: 3
 Player 5 woke up from cond_wait
 Player 5 waiting for turn. Current player: 3
-Player 3 acquired the mutex
-Player 3: hand (3, 3) <> Greasy Card is 12 
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 3
+Player 3 woke up from cond_wait
+Player 3: hand (3, 3) <> Greasy Card is -1 
 Player 3 needs 4 chips
-Player 3 took 4 chips, Chips left 11
+Player 3 took 4 chips, Chips left 21
 Player 3 finished turn. Next player: 4
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 4
 Player 3 unlocked mutex and finished turn
 Player 3 trying to lock mutex
 Player 3 acquired the mutex
 Player 3 waiting for turn. Current player: 4
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 4
 Player 2 woke up from cond_wait
 Player 2 waiting for turn. Current player: 4
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 4
 Player 4 woke up from cond_wait
 Player 4 is the dealer for this round
-Player 4: hand (3, 10) <> Greasy Card is 6 
-Player 4 needs 2 chips
-Player 4 took 2 chips, Chips left 9
+Player 4: hand (3, 6) <> Greasy Card is 4 
+Player 4 needs 1 chips
+Player 4 took 1 chips, Chips left 20
 Player 4 finished turn. Next player: 5
 Player 2 woke up from cond_wait
 Player 2 waiting for turn. Current player: 5
@@ -197,66 +307,58 @@ Player 4 unlocked mutex and finished turn
 Player 4 trying to lock mutex
 Player 4 acquired the mutex
 Player 4 waiting for turn. Current player: 5
-Player 6 woke up from cond_wait
-Player 6 waiting for turn. Current player: 5
-Player 1 woke up from cond_wait
-Player 1 waiting for turn. Current player: 5
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 5
 Player 5 woke up from cond_wait
-Player 5: hand (3, 14) <> Greasy Card is 6 
-Player 5 needs 2 chips
-Player 5 took 2 chips, Chips left 7
+Player 5: hand (3, 8) <> Greasy Card is 4 
+Player 5 needs 1 chips
+Player 5 took 1 chips, Chips left 19
 Player 5 finished turn. Next player: 6
-Player 6 woke up from cond_wait
-Player 6: hand (3, 8) <> Greasy Card is 6 
-Player 6 needs 1 chips
-Player 6 took 1 chips, Chips left 6
-Player 6 completed a round. Total rounds completed: 4
-Player 6 finished turn. Next player: 1
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 6
 Player 5 unlocked mutex and finished turn
 Player 5 trying to lock mutex
 Player 5 acquired the mutex
-Player 5 waiting for turn. Current player: 1
-Player 1 woke up from cond_wait
-Player 1: hand (4, 7) <> Greasy Card is 6 
-Player 1 needs 4 chips
-Player 1 took 4 chips, Chips left 2
-Player 1 finished turn. Next player: 2
+Player 5 waiting for turn. Current player: 6
+Player 6 woke up from cond_wait
+Player 6: hand (3, 12) <> Greasy Card is 4 
+Player 6 needs 4 chips
+Player 6 took 4 chips, Chips left 15
+Player 6 finished turn. Next player: 1
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 1
 Player 6 unlocked mutex and finished turn
 Player 6 trying to lock mutex
-Player 5 woke up from cond_wait
-Player 5 waiting for turn. Current player: 2
+Player 6 acquired the mutex
+Player 6 waiting for turn. Current player: 1
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 1
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 1
+Player 1 woke up from cond_wait
+Player 1: hand (3, 9) <> Greasy Card is 4 
+Player 1 needs 5 chips
+Player 1 took 5 chips, Chips left 10
+Player 1 finished turn. Next player: 2
+Player 2 woke up from cond_wait
+Player 2: hand (3, 7) <> Greasy Card is 4 
+Player 2 needs 4 chips
+Player 2 took 4 chips, Chips left 6
+Player 2 finished turn. Next player: 3
 Player 1 unlocked mutex and finished turn
 Player 1 trying to lock mutex
 Player 1 acquired the mutex
-Player 1 waiting for turn. Current player: 2
-Player 6 acquired the mutex
-Player 6 waiting for turn. Current player: 2
-Player 3 woke up from cond_wait
-Player 3 waiting for turn. Current player: 2
-Player 4 woke up from cond_wait
-Player 4 waiting for turn. Current player: 2
-Player 2 woke up from cond_wait
-Player 2: hand (4, 7) <> Greasy Card is 6 
-Player 2 needs 1 chips
-Player 2 took 1 chips, Chips left 1
-Player 2 finished turn. Next player: 3
-Player 4 woke up from cond_wait
-Player 4 waiting for turn. Current player: 3
+Player 1 waiting for turn. Current player: 3
 Player 2 unlocked mutex and finished turn
 Player 2 trying to lock mutex
 Player 2 acquired the mutex
 Player 2 waiting for turn. Current player: 3
-Player 5 woke up from cond_wait
-Player 5 waiting for turn. Current player: 3
-Player 1 woke up from cond_wait
-Player 1 waiting for turn. Current player: 3
 Player 6 woke up from cond_wait
 Player 6 waiting for turn. Current player: 3
 Player 3 woke up from cond_wait
-Player 3: hand (4, 5) <> Greasy Card is 6 
-Player 3 needs 2 chips
-Player 3 found no chips, refilling bag
-Player 3 took 2 chips, Chips left 28
+Player 3: hand (3, 12) <> Greasy Card is 4 
+Player 3 needs 4 chips
+Player 3 took 4 chips, Chips left 2
 Player 3 finished turn. Next player: 4
 Player 6 woke up from cond_wait
 Player 6 waiting for turn. Current player: 4
@@ -264,12 +366,11 @@ Player 3 unlocked mutex and finished turn
 Player 3 trying to lock mutex
 Player 3 acquired the mutex
 Player 3 waiting for turn. Current player: 4
-Player 2 woke up from cond_wait
-Player 2 waiting for turn. Current player: 4
 Player 4 woke up from cond_wait
-Player 4: hand (4, 8) <> Greasy Card is 6 
-Player 4 needs 5 chips
-Player 4 took 5 chips, Chips left 23
+Player 4 is the dealer for this round
+Player 4: hand (3, 9) <> Greasy Card is 14 
+Player 4 needs 1 chips
+Player 4 took 1 chips, Chips left 1
 Player 4 finished turn. Next player: 5
 Player 6 woke up from cond_wait
 Player 6 waiting for turn. Current player: 5
@@ -282,85 +383,13 @@ Player 1 waiting for turn. Current player: 5
 Player 2 woke up from cond_wait
 Player 2 waiting for turn. Current player: 5
 Player 5 woke up from cond_wait
-Player 5 is the dealer for this round
-Player 5: hand (4, 11) <> Greasy Card is 11 
-Player 5: wins round 4 
+Player 5: hand (3, 14) <> Greasy Card is 14 
+Player 5: wins round 3 
 Player 1: lost round 4 
 Player 2: lost round 4 
 Player 3: lost round 4 
 Player 4: lost round 4 
 Player 6: lost round 4 
-Player 5 needs 2 chips
-Player 5 took 2 chips, Chips left 21
-Player 5 finished turn. Next player: 6
-Player 2 woke up from cond_wait
-Player 2 waiting for turn. Current player: 6
-Player 5 unlocked mutex and finished turn
-Player 5 trying to lock mutex
-Player 5 acquired the mutex
-Player 5 waiting for turn. Current player: 6
-Player 3 woke up from cond_wait
-Player 3 waiting for turn. Current player: 6
-Player 4 woke up from cond_wait
-Player 4 waiting for turn. Current player: 6
-Player 6 woke up from cond_wait
-Player 6: hand (4, 14) <> Greasy Card is -1 
-Player 6 needs 3 chips
-Player 6 took 3 chips, Chips left 18
-Player 6 completed a round. Total rounds completed: 5
-Player 6 finished turn. Next player: 1
-Player 1 woke up from cond_wait
-Player 1: hand (5, 10) <> Greasy Card is -1 
-Player 1 needs 5 chips
-Player 1 took 5 chips, Chips left 13
-Player 6 unlocked mutex and finished turn
-Player 6 trying to lock mutex
-Player 1 finished turn. Next player: 2
-Player 5 woke up from cond_wait
-Player 5 waiting for turn. Current player: 2
-Player 3 woke up from cond_wait
-Player 3 waiting for turn. Current player: 2
-Player 1 unlocked mutex and finished turn
-Player 2 woke up from cond_wait
-Player 2: hand (5, 11) <> Greasy Card is -1 
-Player 1 trying to lock mutex
-Player 2 needs 2 chips
-Player 2 took 2 chips, Chips left 11
-Player 2 finished turn. Next player: 3
-Player 5 woke up from cond_wait
-Player 5 waiting for turn. Current player: 3
-Player 2 unlocked mutex and finished turn
-Player 2 trying to lock mutex
-Player 2 acquired the mutex
-Player 2 waiting for turn. Current player: 3
-Player 6 acquired the mutex
-Player 6 waiting for turn. Current player: 3
-Player 1 acquired the mutex
-Player 1 waiting for turn. Current player: 3
-Player 3 woke up from cond_wait
-Player 3: hand (5, 11) <> Greasy Card is -1 
-Player 3 needs 4 chips
-Player 3 took 4 chips, Chips left 7
-Player 3 finished turn. Next player: 4
-Player 1 woke up from cond_wait
-Player 1 waiting for turn. Current player: 4
-Player 3 unlocked mutex and finished turn
-Player 3 trying to lock mutex
-Player 3 acquired the mutex
-Player 3 waiting for turn. Current player: 4
-Player 4 woke up from cond_wait
-Player 4: hand (5, 14) <> Greasy Card is -1 
-Player 4 needs 4 chips
-Player 4 took 4 chips, Chips left 3
-Player 4 finished turn. Next player: 5
-Player 1 woke up from cond_wait
-Player 1 waiting for turn. Current player: 5
-Player 4 unlocked mutex and finished turn
-Player 4 trying to lock mutex
-Player 4 acquired the mutex
-Player 4 waiting for turn. Current player: 5
-Player 5 woke up from cond_wait
-Player 5: hand (5, 10) <> Greasy Card is -1 
 Player 5 needs 4 chips
 Player 5 found no chips, refilling bag
 Player 5 took 4 chips, Chips left 26
@@ -375,13 +404,263 @@ Player 2 woke up from cond_wait
 Player 2 waiting for turn. Current player: 6
 Player 3 woke up from cond_wait
 Player 3 waiting for turn. Current player: 6
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 6
 Player 6 woke up from cond_wait
-Player 6 is the dealer for this round
-Player 6: hand (5, 4) <> Greasy Card is 8 
+Player 6: hand (4, 3) <> Greasy Card is -1 
 Player 6 needs 1 chips
 Player 6 took 1 chips, Chips left 25
-Player 6 completed a round. Total rounds completed: 6
-Player 6 found that enough rounds are completed, stopping the game
+Player 6 finished turn. Next player: 1
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 1
+Player 6 unlocked mutex and finished turn
+Player 6 trying to lock mutex
+Player 6 acquired the mutex
+Player 6 waiting for turn. Current player: 1
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 1
+Player 1 woke up from cond_wait
+Player 1: hand (4, 10) <> Greasy Card is -1 
+Player 1 needs 5 chips
+Player 1 took 5 chips, Chips left 20
+Player 1 finished turn. Next player: 2
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 2
+Player 1 unlocked mutex and finished turn
+Player 1 trying to lock mutex
+Player 1 acquired the mutex
+Player 1 waiting for turn. Current player: 2
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 2
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 2
+Player 2 woke up from cond_wait
+Player 2: hand (4, 6) <> Greasy Card is -1 
+Player 2 needs 3 chips
+Player 2 took 3 chips, Chips left 17
+Player 2 finished turn. Next player: 3
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 3
+Player 2 unlocked mutex and finished turn
+Player 2 trying to lock mutex
+Player 2 acquired the mutex
+Player 2 waiting for turn. Current player: 3
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 3
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 3
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 3
+Player 3 woke up from cond_wait
+Player 3: hand (4, 3) <> Greasy Card is -1 
+Player 3 needs 5 chips
+Player 3 took 5 chips, Chips left 12
+Player 3 finished turn. Next player: 4
+Player 4 woke up from cond_wait
+Player 4: hand (4, 11) <> Greasy Card is -1 
+Player 4 needs 5 chips
+Player 4 took 5 chips, Chips left 7
+Player 4 finished turn. Next player: 5
+Player 3 unlocked mutex and finished turn
+Player 3 trying to lock mutex
+Player 3 acquired the mutex
+Player 3 waiting for turn. Current player: 5
+Player 4 unlocked mutex and finished turn
+Player 4 trying to lock mutex
+Player 4 acquired the mutex
+Player 4 waiting for turn. Current player: 5
+Player 5 woke up from cond_wait
+Player 5 is the dealer for this round
+Player 5: hand (4, 3) <> Greasy Card is 14 
+Player 5 needs 1 chips
+Player 5 took 1 chips, Chips left 6
+Player 5 finished turn. Next player: 6
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 6
+Player 5 unlocked mutex and finished turn
+Player 5 trying to lock mutex
+Player 5 acquired the mutex
+Player 5 waiting for turn. Current player: 6
+Player 6 woke up from cond_wait
+Player 6: hand (4, 9) <> Greasy Card is 14 
+Player 6 needs 2 chips
+Player 6 took 2 chips, Chips left 4
+Player 6 finished turn. Next player: 1
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 1
+Player 6 unlocked mutex and finished turn
+Player 6 trying to lock mutex
+Player 6 acquired the mutex
+Player 6 waiting for turn. Current player: 1
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 1
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 1
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 1
+Player 1 woke up from cond_wait
+Player 1: hand (4, 12) <> Greasy Card is 14 
+Player 1 needs 3 chips
+Player 1 took 3 chips, Chips left 1
+Player 1 finished turn. Next player: 2
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 2
+Player 1 unlocked mutex and finished turn
+Player 1 trying to lock mutex
+Player 1 acquired the mutex
+Player 1 waiting for turn. Current player: 2
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 2
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 2
+Player 2 woke up from cond_wait
+Player 2: hand (4, 5) <> Greasy Card is 14 
+Player 2 needs 2 chips
+Player 2 found no chips, refilling bag
+Player 2 took 2 chips, Chips left 28
+Player 2 finished turn. Next player: 3
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 3
+Player 2 unlocked mutex and finished turn
+Player 2 trying to lock mutex
+Player 2 acquired the mutex
+Player 2 waiting for turn. Current player: 3
+Player 3 woke up from cond_wait
+Player 3: hand (4, 9) <> Greasy Card is 14 
+Player 3 needs 1 chips
+Player 3 took 1 chips, Chips left 27
+Player 3 finished turn. Next player: 4
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 4
+Player 3 unlocked mutex and finished turn
+Player 3 trying to lock mutex
+Player 3 acquired the mutex
+Player 3 waiting for turn. Current player: 4
+Player 4 woke up from cond_wait
+Player 4: hand (4, 3) <> Greasy Card is 14 
+Player 4 needs 1 chips
+Player 4 took 1 chips, Chips left 26
+Player 4 finished turn. Next player: 5
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 5
+Player 4 unlocked mutex and finished turn
+Player 4 trying to lock mutex
+Player 4 acquired the mutex
+Player 4 waiting for turn. Current player: 5
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 5
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 5
+Player 5 woke up from cond_wait
+Player 5 is the dealer for this round
+Player 5: hand (4, 14) <> Greasy Card is 4 
+Player 5 needs 5 chips
+Player 5 took 5 chips, Chips left 21
+Player 5 finished turn. Next player: 6
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 6
+Player 5 unlocked mutex and finished turn
+Player 5 trying to lock mutex
+Player 5 acquired the mutex
+Player 5 waiting for turn. Current player: 6
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 6
+Player 6 woke up from cond_wait
+Player 6: hand (4, 14) <> Greasy Card is 4 
+Player 6 needs 1 chips
+Player 6 took 1 chips, Chips left 20
+Player 6 finished turn. Next player: 1
+Player 1 woke up from cond_wait
+Player 1: hand (4, 3) <> Greasy Card is 4 
+Player 1 needs 4 chips
+Player 1 took 4 chips, Chips left 16
+Player 1 finished turn. Next player: 2
+Player 6 unlocked mutex and finished turn
+Player 6 trying to lock mutex
+Player 6 acquired the mutex
+Player 6 waiting for turn. Current player: 2
+Player 1 unlocked mutex and finished turn
+Player 1 trying to lock mutex
+Player 1 acquired the mutex
+Player 1 waiting for turn. Current player: 2
+Player 2 woke up from cond_wait
+Player 2: hand (4, 9) <> Greasy Card is 4 
+Player 2 needs 3 chips
+Player 2 took 3 chips, Chips left 13
+Player 2 finished turn. Next player: 3
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 3
+Player 2 unlocked mutex and finished turn
+Player 2 trying to lock mutex
+Player 2 acquired the mutex
+Player 2 waiting for turn. Current player: 3
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 3
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 3
+Player 3 woke up from cond_wait
+Player 3: hand (4, 14) <> Greasy Card is 4 
+Player 3 needs 3 chips
+Player 3 took 3 chips, Chips left 10
+Player 3 finished turn. Next player: 4
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 4
+Player 3 unlocked mutex and finished turn
+Player 3 trying to lock mutex
+Player 3 acquired the mutex
+Player 3 waiting for turn. Current player: 4
+Player 6 woke up from cond_wait
+Player 6 waiting for turn. Current player: 4
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 4
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 4
+Player 4 woke up from cond_wait
+Player 4: hand (4, 14) <> Greasy Card is 4 
+Player 4 needs 1 chips
+Player 4 took 1 chips, Chips left 9
+Player 4 finished turn. Next player: 5
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 5
+Player 4 unlocked mutex and finished turn
+Player 4 trying to lock mutex
+Player 4 acquired the mutex
+Player 4 waiting for turn. Current player: 5
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 5
+Player 5 woke up from cond_wait
+Player 5 is the dealer for this round
+Player 5: hand (4, 14) <> Greasy Card is 14 
+Player 5: wins round 4 
+Player 1: lost round 5 
+Player 2: lost round 5 
+Player 3: lost round 5 
+Player 4: lost round 5 
+Player 6: lost round 5 
+Player 5 needs 5 chips
+Player 5 took 5 chips, Chips left 4
+Player 5 finished turn. Next player: 6
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 6
+Player 5 unlocked mutex and finished turn
+Player 5 trying to lock mutex
+Player 5 acquired the mutex
+Player 5 waiting for turn. Current player: 6
+Player 1 woke up from cond_wait
+Player 1 waiting for turn. Current player: 6
+Player 3 woke up from cond_wait
+Player 3 waiting for turn. Current player: 6
+Player 6 woke up from cond_wait
+Player 6 is the dealer for this round
+Player 6: hand (5, 13) <> Greasy Card is 13 
+Player 6: wins round 5 
+Player 1: lost round 6 
+Player 2: lost round 6 
+Player 3: lost round 6 
+Player 4: lost round 6 
+Player 5: lost round 6 
+Player 6 needs 1 chips
+Player 6 took 1 chips, Chips left 3
 Player 6 finished turn. Next player: 1
 Player 3 woke up from cond_wait
 Player 3 waiting for turn. Current player: 1
@@ -391,43 +670,50 @@ Player 4 woke up from cond_wait
 Player 4 waiting for turn. Current player: 1
 Player 5 woke up from cond_wait
 Player 5 waiting for turn. Current player: 1
+Player 2 woke up from cond_wait
+Player 2 waiting for turn. Current player: 1
 Player 1 woke up from cond_wait
 Player 1 is the dealer for this round
-Player 1: hand (6, 14) <> Greasy Card is 11 
-Player 1 needs 5 chips
-Player 1 took 5 chips, Chips left 20
+Player 1: hand (6, 6) <> Greasy Card is 3 
+Player 1 needs 3 chips
+Player 1 took 3 chips, Chips left 0
 Player 1 finished turn. Next player: 2
 Player 5 woke up from cond_wait
 Player 5 waiting for turn. Current player: 2
 Player 1 unlocked mutex and finished turn
 Thread, Player 1 ending
-Player 2 woke up from cond_wait
-Player 2: hand (6, 14) <> Greasy Card is 11 
-Player 2 needs 1 chips
-Player 2 took 1 chips, Chips left 19
-Player 2 finished turn. Next player: 3
-Player 5 woke up from cond_wait
-Player 5 waiting for turn. Current player: 3
 Player 3 woke up from cond_wait
-Player 3: hand (6, 4) <> Greasy Card is 11 
-Player 3 needs 1 chips
-Player 3 took 1 chips, Chips left 18
+Player 3 waiting for turn. Current player: 2
+Player 4 woke up from cond_wait
+Player 4 waiting for turn. Current player: 2
+Player 2 woke up from cond_wait
+Player 2: hand (6, 6) <> Greasy Card is 3 
+Player 2 needs 1 chips
+Player 2 found no chips, refilling bag
+Player 2 took 1 chips, Chips left 29
+Player 2 finished turn. Next player: 3
+Player 3 woke up from cond_wait
+Player 3: hand (6, 6) <> Greasy Card is 3 
+Player 3 needs 3 chips
+Player 3 took 3 chips, Chips left 26
 Player 3 finished turn. Next player: 4
 Player 2 unlocked mutex and finished turn
 Thread, Player 2 ending
+Player 5 woke up from cond_wait
+Player 5 waiting for turn. Current player: 4
 Player 3 unlocked mutex and finished turn
 Thread, Player 3 ending
 Player 4 woke up from cond_wait
-Player 4: hand (6, 9) <> Greasy Card is 11 
-Player 4 needs 2 chips
-Player 4 took 2 chips, Chips left 16
+Player 4: hand (6, 6) <> Greasy Card is 3 
+Player 4 needs 4 chips
+Player 4 took 4 chips, Chips left 22
 Player 4 finished turn. Next player: 5
 Player 4 unlocked mutex and finished turn
 Thread, Player 4 ending
 Player 5 woke up from cond_wait
-Player 5: hand (6, 14) <> Greasy Card is 11 
+Player 5: hand (6, 6) <> Greasy Card is 3 
 Player 5 needs 3 chips
-Player 5 took 3 chips, Chips left 13
+Player 5 took 3 chips, Chips left 19
 Player 5 finished turn. Next player: 6
 Player 5 unlocked mutex and finished turn
 Thread, Player 5 ending

@@ -125,7 +125,8 @@ int isMatch(Card playerCard, Card greasyCard) {
 
 
 //Multi threading stuff here turn taking------------
-void *routine(void *args) {
+void *routine(void *args) { 
+    int roundWinner = 0;
     int playerNumber = *(int *)args;
 
     printf("Thread, Player %d starting\n", playerNumber);
@@ -145,7 +146,7 @@ void *routine(void *args) {
 
 
         //Logic here for cards
-        //this functions only happens once a round
+        //this functions only happens
         // Check if current player is the dealer, if so proceed, shuffle, draw the greasy.
         if (playerNumber == ((rounds % numPlayers) + 1)) {
             printf("Player %d is the dealer for this round\n", playerNumber);
@@ -169,12 +170,14 @@ void *routine(void *args) {
         // Ensure the if condition is enclosed in parentheses
         if (isMatch(currentPlayerCard, greasyCard)) {
             printf("Player %d: wins round %d \n", playerNumber, rounds);
+            roundWinner = 1;
+            rounds++;
             // Additional logic for when the player wins
 
             //Greasy card won't match with any other in round now:
             greasyCard.suit = "Greasy"; // Arbitrary suit name
             greasyCard.value = "Greasy"; // Arbitrary value name
-            greasyCard.numericValue = -1; // Absurd number that doesn't match any card
+            greasyCard.numericValue = -1; // Absurd number that doesn't match any card SHOWING A WIN IF -1
 
 
             // Notify other players they lost the round
@@ -198,14 +201,14 @@ void *routine(void *args) {
         printf("Player %d took %d chips, Chips left %d\n", playerNumber, chipsNeeded, chipsInBag);
 
         // Check for round completion and move to the next player
-        if (playerNumber == numPlayers) {
-            rounds++;
-            printf("Player %d completed a round. Total rounds completed: %d\n", playerNumber, rounds);
+        
+            //rounds++;
+            //printf("Player %d completed a round. Total rounds completed: %d\n", playerNumber, rounds);
             if (rounds >= numPlayers) {
-                printf("Player %d found that enough rounds are completed, stopping the game\n", playerNumber);
+                //rintf("Player %d found that enough rounds are completed, stopping the game\n", playerNumber);
                 keepPlaying = 0;
             }
-        }
+        
 
         currentPlayer = (currentPlayer % numPlayers) + 1;
         printf("Player %d finished turn. Next player: %d\n", playerNumber, currentPlayer);
