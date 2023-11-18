@@ -209,7 +209,7 @@ void *routine(void *args) {
         
             //rounds++;
             //printf("Player %d completed a round. Total rounds completed: %d\n", playerNumber, rounds);
-            if (rounds >= numPlayers) {
+            if (rounds > numPlayers) {
                 //rintf("Player %d found that enough rounds are completed, stopping the game\n", playerNumber);
                 keepPlaying = 0;
             }
