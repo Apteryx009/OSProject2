@@ -145,6 +145,7 @@ void *routine(void *args) {
 
 
         //Logic here for cards
+        //this functions only happens once a round
         // Check if current player is the dealer, if so proceed, shuffle, draw the greasy.
         if (playerNumber == ((rounds % numPlayers) + 1)) {
             printf("Player %d is the dealer for this round\n", playerNumber);
@@ -169,6 +170,19 @@ void *routine(void *args) {
         if (isMatch(currentPlayerCard, greasyCard)) {
             printf("Player %d: wins round %d \n", playerNumber, rounds);
             // Additional logic for when the player wins
+
+            //Greasy card won't match with any other in round now:
+            greasyCard.suit = "Greasy"; // Arbitrary suit name
+            greasyCard.value = "Greasy"; // Arbitrary value name
+            greasyCard.numericValue = -1; // Absurd number that doesn't match any card
+
+
+            // Notify other players they lost the round
+            for (int i = 1; i <= numPlayers; i++) {
+                if (i != playerNumber) {
+                    printf("Player %d: lost round %d \n", i, rounds);
+                }
+            }
             
         } 
 
