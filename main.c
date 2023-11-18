@@ -14,6 +14,8 @@ int rounds = 1;                                 // Global variable to track the 
 volatile int keepPlaying = 1;                   // Global flag
 int currentPlayer = 1;                          // Global variable to track the current player, start from 1
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER; // Condition variable
+FILE *logFile;
+
 
 pthread_mutex_t cardDeckMutex;
 pthread_mutex_t greasyCardMutex;
@@ -70,7 +72,7 @@ void *initializeDeck(Card *deck)
         }
     }
 
-    printf("Deck initialized.\n");
+    fprintf(logFile, "Deck initialized.\n");
 }
 
 void *shuffleDeck(Card *deck)
@@ -93,24 +95,24 @@ void *shuffleDeck(Card *deck)
 // Print the deck
 void *printDeck(Card *deck)
 {
-    printf("REMAINING DECK SIZE: %d \n", deckSize);
+    fprintf(logFile, "REMAINING DECK SIZE: %d \n", deckSize);
     for (int i = 0; i < DECK_SIZE; i++)
     {
-        printf(" %s of %s ", deck[i].value, deck[i].suit);
+        fprintf(logFile, " %s of %s ", deck[i].value, deck[i].suit);
     }
-    printf("\n");
+    fprintf(logFile, "\n");
 }
 
 void *drawGreasyCard(Card *deck)
 {
     pthread_mutex_lock(&greasyCardMutex);
-    //printf("greasyyy %d ", deckSize);
+    fprintf(logFile, "greasyyy %d ", deckSize);
 
-    if (deckSize <= numPlayers)
+    if (deckSize < numPlayers)
     {
-        printf("\nNot enough remaining cards!!! GAME OVER \n");
+        fprintf(logFile, "\nNot enough remaining cards!!! GAME OVER \n");
        
-        // printf("Thus, it's not mathematically possible to reach n rounds. Game over.");
+        // fprintf(logFile, ("Thus, it's not mathematically possible to reach n rounds. Game over.");
         exit(0);
     }
 
@@ -155,22 +157,22 @@ void *routine(void *args)
     int roundWinner = 0;
     int playerNumber = *(int *)args;
 
-    printf("Thread, Player %d starting\n", playerNumber);
+    fprintf(logFile, "Thread, Player %d starting\n", playerNumber);
 
     unsigned int localSeed = seed + (unsigned long)pthread_self();
 
     while (keepPlaying)
     {
         //sleep(1);
-        // printf("Player %d trying to lock mutex\n", playerNumber);
+        // fprintf(logFile, ("Player %d trying to lock mutex\n", playerNumber);
         pthread_mutex_lock(&chipsBagMutex);
-        // printf("Player %d acquired the mutex\n", playerNumber);
+        // fprintf(logFile, ("Player %d acquired the mutex\n", playerNumber);
 
         while (playerNumber != currentPlayer)
         {
-            // printf("Player %d waiting for turn. Current player: %d\n", playerNumber, currentPlayer);
+            // fprintf(logFile, ("Player %d waiting for turn. Current player: %d\n", playerNumber, currentPlayer);
             pthread_cond_wait(&cond, &chipsBagMutex);
-            // printf("Player %d woke up from cond_wait\n", playerNumber);
+            // fprintf(logFile, ("Player %d woke up from cond_wait\n", playerNumber);
         }
 
         // Logic here for cards
@@ -178,11 +180,11 @@ void *routine(void *args)
         //  Check if current player is the dealer, if so proceed, shuffle, draw the greasy.
         if (playerNumber == ((rounds % numPlayers) + 1))
         {
-            // printf("Player %d is the dealer for this round\n", playerNumber);
+            // fprintf(logFile, ("Player %d is the dealer for this round\n", playerNumber);
             pthread_mutex_lock(&cardDeckMutex);
 
             shuffleDeck(ourDeck);
-            printf("DECK SHUFFLED---");
+            fprintf(logFile, "DECK SHUFFLED---");
             printDeck(ourDeck);
             drawGreasyCard(ourDeck);
 
@@ -192,13 +194,13 @@ void *routine(void *args)
         // Card drawing, comparing, and potato Chip taking logic
         Card currentPlayerCard;
         currentPlayerCard = drawCard(ourDeck);
-        printf("Player %d: hand (%d, %d) <> Greasy Card is %d \n", playerNumber, rounds,
+        fprintf(logFile, "Player %d: hand (%d, %d) <> Greasy Card is %d \n", playerNumber, rounds,
                currentPlayerCard.numericValue, greasyCard.numericValue);
 
         // Ensure the if condition is enclosed in parentheses
         if (isMatch(currentPlayerCard, greasyCard))
         {
-            printf("Player %d: WINS round %d \n", playerNumber, rounds);
+            fprintf(logFile, "Player %d: WINS round %d \n", playerNumber, rounds);
             roundWinner = 1;
 
             // Additional logic for when the player wins
@@ -213,29 +215,29 @@ void *routine(void *args)
             {
                 if (i != playerNumber)
                 {
-                    printf("Player %d: lost round %d \n", i, rounds);
+                    fprintf(logFile, "Player %d: lost round %d \n", i, rounds);
                 }
             }
             rounds++;
         }
 
         int chipsNeeded = (rand_r(&localSeed) % 5) + 1;
-        // printf("Player %d needs %d chips\n", playerNumber, chipsNeeded);
+        // fprintf(logFile, ("Player %d needs %d chips\n", playerNumber, chipsNeeded);
 
         if (chipsInBag - chipsNeeded < 0)
         {
-            printf("Player %d found no chips, refilling bag\n", playerNumber);
+            fprintf(logFile, "Player %d found no chips, refilling bag\n", playerNumber);
             chipsInBag = chipsInBagREFILL;
             totalBagOfChips++;
         }
 
         chipsInBag -= chipsNeeded;
-        printf("Player %d took %d chips from bag %d, chips left %d\n", playerNumber, chipsNeeded, totalBagOfChips, chipsInBag);
+        fprintf(logFile, "Player %d took %d chips from bag %d, chips left %d\n", playerNumber, chipsNeeded, totalBagOfChips, chipsInBag);
 
         // Check for round completion and move to the next player
 
         // rounds++;
-        // printf("Player %d completed a round. Total rounds completed: %d\n", playerNumber, rounds);
+        // fprintf(logFile, ("Player %d completed a round. Total rounds completed: %d\n", playerNumber, rounds);
         if (rounds > numPlayers)
         {
             // rintf("Player %d found that enough rounds are completed, stopping the game\n", playerNumber);
@@ -243,14 +245,14 @@ void *routine(void *args)
         }
 
         currentPlayer = (currentPlayer % numPlayers) + 1;
-        // printf("Player %d finished turn. Next player: %d\n", playerNumber, currentPlayer);
+        // fprintf(logFile, ("Player %d finished turn. Next player: %d\n", playerNumber, currentPlayer);
 
         pthread_cond_broadcast(&cond);
         pthread_mutex_unlock(&chipsBagMutex);
-        // printf("Player %d unlocked mutex and finished turn\n", playerNumber);
+        // fprintf(logFile, ("Player %d unlocked mutex and finished turn\n", playerNumber);
     }
 
-    printf("Thread, Player %d ending\n", playerNumber);
+    fprintf(logFile, "Thread, Player %d ending\n", playerNumber);
     return NULL;
 }
 
@@ -273,6 +275,12 @@ int main(int argc, char *argv[])
 
     chipsInBagREFILL = chipsInBag;
 
+    logFile = fopen("OSlog.txt", "w"); // Open for writing, overwrites existing content
+    if (logFile == NULL) {
+        perror("Error opening log file");
+        return 1;
+    }
+
     srand(seed);
     pthread_t players[numPlayers];
     pthread_mutex_init(&chipsBagMutex, NULL);
@@ -282,7 +290,8 @@ int main(int argc, char *argv[])
     // Initialize the card deck
     initializeDeck(ourDeck);
 
-    printf("Note that (3, 9), this would mean round 3, card value of 9 \n");
+    fprintf(logFile, "Note that (3, 9), this would mean round 3, card value of 9 \n");
+    fprintf(logFile, "The game ENDS when we have reached n rounds OR out of cards! \n");
 
     int *playerNumbers = malloc(numPlayers * sizeof(int)); // Dynamic allocation
     if (playerNumbers == NULL)
@@ -316,5 +325,7 @@ int main(int argc, char *argv[])
     pthread_mutex_destroy(&cardDeckMutex);
     pthread_mutex_destroy(&greasyCardMutex);
 
+
+    fclose(logFile); // Close the file at the end of your program
     return 0;
 }
