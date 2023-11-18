@@ -16,6 +16,7 @@ int currentPlayer = 1;                          // Global variable to track the 
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER; // Condition variable
 
 pthread_mutex_t cardDeckMutex;
+pthread_mutex_t greasyCardMutex;
 // Structure to represent a card
 typedef struct
 {
@@ -31,7 +32,7 @@ Card greasyCard;
 
 int deckSize = DECK_SIZE; // Initialize with the total number of cards in the deck
 
-void initializeDeck(Card *deck)
+void *initializeDeck(Card *deck)
 {
     char *suits[] = {"Hearts", "Diamonds", "Clubs", "Spades"};
     char *values[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
@@ -72,7 +73,7 @@ void initializeDeck(Card *deck)
     printf("Deck initialized.\n");
 }
 
-void shuffleDeck(Card *deck)
+void *shuffleDeck(Card *deck)
 {
     for (int i = 0; i < DECK_SIZE; i++)
     {
@@ -90,7 +91,7 @@ void shuffleDeck(Card *deck)
 }
 
 // Print the deck
-void printDeck(Card *deck)
+void *printDeck(Card *deck)
 {
     printf("REMAINING DECK SIZE: %d \n", deckSize);
     for (int i = 0; i < DECK_SIZE; i++)
@@ -100,23 +101,37 @@ void printDeck(Card *deck)
     printf("\n");
 }
 
-Card drawGreasyCard(Card *deck)
+void *drawGreasyCard(Card *deck)
 {
+    pthread_mutex_lock(&greasyCardMutex);
+    //printf("greasyyy %d ", deckSize);
+
+    if (deckSize <= numPlayers)
+    {
+        printf("\nNot enough remaining cards!!! GAME OVER \n");
+       
+        // printf("Thus, it's not mathematically possible to reach n rounds. Game over.");
+        exit(0);
+    }
+
     int index = rand() % (deckSize);
-    Card greasyCard = deck[index];
+    greasyCard = deck[index];
 
     // Shift remaining cards
     for (int i = index; i < (deckSize)-1; i++)
     {
         deck[i] = deck[i + 1];
     }
+
     (deckSize)--; // Reduce the deck size
 
-    return greasyCard;
+    pthread_mutex_unlock(&greasyCardMutex);
+    // greasyCard = greasyCard01;
 }
 
 Card drawCard(Card *deck)
 {
+    pthread_mutex_lock(&greasyCardMutex);
     Card drawnCard = deck[0]; // Draw the top card
 
     // Shift remaining cards
@@ -125,7 +140,7 @@ Card drawCard(Card *deck)
         deck[i] = deck[i + 1];
     }
     (deckSize)--; // Reduce the deck size
-
+    pthread_mutex_unlock(&greasyCardMutex);
     return drawnCard;
 }
 
@@ -146,6 +161,7 @@ void *routine(void *args)
 
     while (keepPlaying)
     {
+        //sleep(1);
         // printf("Player %d trying to lock mutex\n", playerNumber);
         pthread_mutex_lock(&chipsBagMutex);
         // printf("Player %d acquired the mutex\n", playerNumber);
@@ -168,10 +184,9 @@ void *routine(void *args)
             shuffleDeck(ourDeck);
             printf("DECK SHUFFLED---");
             printDeck(ourDeck);
-            greasyCard = drawGreasyCard(ourDeck);
+            drawGreasyCard(ourDeck);
 
             pthread_mutex_unlock(&cardDeckMutex);
-            // Additional dealer responsibilities can be added here
         }
 
         // Card drawing, comparing, and potato Chip taking logic
@@ -183,7 +198,7 @@ void *routine(void *args)
         // Ensure the if condition is enclosed in parentheses
         if (isMatch(currentPlayerCard, greasyCard))
         {
-            printf("Player %d: wins round %d \n", playerNumber, rounds);
+            printf("Player %d: WINS round %d \n", playerNumber, rounds);
             roundWinner = 1;
 
             // Additional logic for when the player wins
@@ -262,6 +277,7 @@ int main(int argc, char *argv[])
     pthread_t players[numPlayers];
     pthread_mutex_init(&chipsBagMutex, NULL);
     pthread_mutex_init(&cardDeckMutex, NULL);
+    pthread_mutex_init(&greasyCardMutex, NULL);
 
     // Initialize the card deck
     initializeDeck(ourDeck);
@@ -298,6 +314,7 @@ int main(int argc, char *argv[])
 
     pthread_mutex_destroy(&chipsBagMutex);
     pthread_mutex_destroy(&cardDeckMutex);
+    pthread_mutex_destroy(&greasyCardMutex);
 
     return 0;
 }
