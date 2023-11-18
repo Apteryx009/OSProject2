@@ -171,7 +171,7 @@ void *routine(void *args) {
         if (isMatch(currentPlayerCard, greasyCard)) {
             printf("Player %d: wins round %d \n", playerNumber, rounds);
             roundWinner = 1;
-            rounds++;
+           
             // Additional logic for when the player wins
 
             //Greasy card won't match with any other in round now:
@@ -186,7 +186,7 @@ void *routine(void *args) {
                     printf("Player %d: lost round %d \n", i, rounds);
                 }
             }
-            
+            rounds++; 
         } 
 
         int chipsNeeded = (rand_r(&localSeed) % 5) + 1;
