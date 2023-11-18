@@ -7,7 +7,7 @@
 pthread_mutex_t chipsBagMutex;
 const int numPlayers = 6;
 int chipsInBag = 30;
-int seed = 0;
+float seed =0;
 int rounds = 1; // Global variable to track the number of completed rounds
 volatile int keepPlaying = 1; // Global flag
 int currentPlayer = 1; // Global variable to track the current player, start from 1
@@ -68,15 +68,20 @@ void initializeDeck(Card *deck) {
 
 
 
-// Shuffle the deck
 void shuffleDeck(Card *deck) {
     for (int i = 0; i < DECK_SIZE; i++) {
-        int r = i + rand() / (RAND_MAX / (DECK_SIZE - i) + 1);
+        int range = DECK_SIZE - i;
+        if (range <= 0) {
+            // Prevents divide by zero if range is 0 or negative
+            continue;
+        }
+        int r = i + rand() % range;  // Using modulus operator to avoid division
         Card temp = deck[i];
         deck[i] = deck[r];
         deck[r] = temp;
     }
 }
+
 
 // Print the deck
 void printDeck(Card *deck) {
@@ -238,7 +243,7 @@ int main(int argc, char *argv[])
     {
         // If no seed is provided, you could default to the current time
         // seed = time(NULL);
-        printf("No seed provided, using default seed 0\n");
+        printf("No seed provided, using default seed\n");
     }
 
     srand(seed);
